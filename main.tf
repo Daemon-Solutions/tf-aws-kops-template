@@ -4,7 +4,6 @@ data "template_file" "cluster" {
   vars {
     cluster_name            = "${var.cluster_name}"
     config_base             = "s3://${var.state_bucket}/${var.cluster_name}"
-    vpc_cidr                = "${var.vpc_cidr}"
     vpc_id                  = "${var.vpc_id}"
     etcd_members_snippet    = "${join("", data.template_file.etcd_members.*.rendered)}"
     private_subnets_snippet = "${join("", data.template_file.private_subnets.*.rendered)}"

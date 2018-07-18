@@ -14,10 +14,6 @@ variable "azs" {
   type = "list"
 }
 
-variable "vpc_cidr" {
-  type = "string"
-}
-
 variable "vpc_id" {
   type = "string"
 }
