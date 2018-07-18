@@ -22,6 +22,10 @@ module "cluster" {
   vpc_id           = "vpc-blahblahblah"
   private_subnets  = [ "subnet-blahblah", "subnet-blahblah", "subnet-blahblah" ]
   public_subnets   = [ "subnet-blahblah", "subnet-blahblah", "subnet-blahblah" ]
+  master_instance_type = "c4.large"
+  node_instance_type   = "t2.medium"
+  node_asg_size_min    = "2"
+  node_asg_size_max    = "2"
 }
 ```
 
@@ -36,7 +40,10 @@ Variables marked with an * are mandatory, the others have sane defaults and can 
  - `vpc_id`* - ID of the VPC where the cluster will be deployed
  - `public_subnets`* - Public subnet IDs
  - `private_subnets`* - Private subnet IDs
-
+ - `master_instance_type` - Instance type for master(s)
+ - `node_instance_type` - Instance type for nodes
+ - `node_asg_size_min` - Minimum number fo nodes
+ - `node_asg_size_max` - Maximum number fo nodes
 
 ## Outputs
 

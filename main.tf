@@ -10,6 +10,9 @@ data "template_file" "cluster" {
     public_subnets_snippet  = "${join("", data.template_file.public_subnets.*.rendered)}"
     master_igs_snippet      = "${join("", data.template_file.master_igs.*.rendered)}"
     private_subnets_list    = "${join("", formatlist("  - %s\n", var.azs))}"
+    node_instance_type      = "${var.node_instance_type}"
+    node_asg_size_min       = "${var.node_asg_size_min}"
+    node_asg_size_max       = "${var.node_asg_size_max}"
   }
 }
 
@@ -48,7 +51,8 @@ data "template_file" "master_igs" {
   count    = "${var.master_ha ? 3 : 1}"
 
   vars {
-    cluster_name = "${var.cluster_name}"
-    az           = "${element(var.azs, count.index)}"
+    cluster_name         = "${var.cluster_name}"
+    az                   = "${element(var.azs, count.index)}"
+    master_instance_type = "${var.master_instance_type}"
   }
 }
