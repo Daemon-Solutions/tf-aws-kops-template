@@ -8,6 +8,7 @@ create|replace`. Assumes:
  * Private topology
  * Private DNS
  * Calico networking
+ * No bastions
 
 ## Usage
 
