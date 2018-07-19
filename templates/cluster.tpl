@@ -50,6 +50,8 @@ ${etcd_members_snippet}
 ${private_subnets_snippet}
 ${public_subnets_snippet}
   topology:
+    bastion:
+      bastionPublicName: bastion.${cluster_name}
     dns:
       type: Private
     masters: private
@@ -57,7 +59,7 @@ ${public_subnets_snippet}
 
 ---
 
-${master_igs_snippet}
+${master_ig_snippet}
 
 apiVersion: kops/v1alpha2
 kind: InstanceGroup
@@ -77,21 +79,4 @@ spec:
   subnets:
 ${private_subnets_list}
 
----
-
-apiVersion: kops/v1alpha2
-kind: InstanceGroup
-metadata:
-  labels:
-    kops.k8s.io/cluster: ${cluster_name}
-  name: bastions
-spec:
-  image: kope.io/k8s-1.9-debian-jessie-amd64-hvm-ebs-2018-03-11
-  machineType: t2.micro
-  maxSize: ${enable_bastion}
-  minSize: ${enable_bastion}
-  nodeLabels:
-    kops.k8s.io/instancegroup: bastions
-  role: Bastion
-  subnets:
-${public_subnets_list}
+${bastion_ig_snippet}
