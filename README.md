@@ -37,6 +37,7 @@ Variables marked with an * are mandatory, the others have sane defaults and can 
  - `state_bucket`* - Name of S3 bucket where cluster state, PKI etc are kept
  - `master_ha` - If false there will be 1 master, if true there will be 3
  - `azs`* - list of AZs in which to distribute subnets
+ - `vpc_cidr`* - CIDR of the VPC where the cluster will be deployed
  - `vpc_id`* - ID of the VPC where the cluster will be deployed
  - `public_subnets`* - Public subnet IDs
  - `private_subnets`* - Private subnet IDs
