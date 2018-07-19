@@ -9,6 +9,7 @@ create|replace`. Assumes:
  * Private DNS
  * Calico networking
  * No bastions
+ * RBAC enabled
 
 ## Usage
 
