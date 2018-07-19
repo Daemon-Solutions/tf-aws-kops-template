@@ -11,9 +11,11 @@ data "template_file" "cluster" {
     public_subnets_snippet  = "${join("", data.template_file.public_subnets.*.rendered)}"
     master_igs_snippet      = "${join("", data.template_file.master_igs.*.rendered)}"
     private_subnets_list    = "${join("", formatlist("  - %s\n", var.azs))}"
+    public_subnets_list     = "${join("", formatlist("  - utility-%s\n", var.azs))}"
     node_instance_type      = "${var.node_instance_type}"
     node_asg_size_min       = "${var.node_asg_size_min}"
     node_asg_size_max       = "${var.node_asg_size_max}"
+    enable_bastion          = "${var.enable_bastion}"
   }
 }
 
