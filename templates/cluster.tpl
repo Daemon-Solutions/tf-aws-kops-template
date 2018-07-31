@@ -33,7 +33,7 @@ ${etcd_members_snippet}
 ${etcd_members_snippet}
     name: events
   iam:
-    allowContainerRegistry: false
+    allowContainerRegistry: true
     legacy: false
   kubernetesApiAccess:
   - 0.0.0.0/0
