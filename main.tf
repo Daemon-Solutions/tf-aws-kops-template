@@ -66,6 +66,6 @@ data "template_file" "bastion_ig" {
 
   vars {
     cluster_name            = "${var.cluster_name}"
-    public_subnets_list     = "${join("", formatlist("  - utility-%s\n", var.azs))}"
+    private_subnets_list    = "${join("", formatlist("  - %s\n", var.azs))}"
   }
 }

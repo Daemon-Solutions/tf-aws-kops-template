@@ -15,4 +15,4 @@ spec:
     kops.k8s.io/instancegroup: bastions
   role: Bastion
   subnets:
-${public_subnets_list}
+${private_subnets_list}
