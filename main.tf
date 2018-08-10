@@ -16,6 +16,7 @@ data "template_file" "cluster" {
     node_asg_size_min       = "${var.node_asg_size_min}"
     node_asg_size_max       = "${var.node_asg_size_max}"
     enable_bastion          = "${var.enable_bastion}"
+    node_additional_policies = "${indent(6, var.node_additional_policies)}"
   }
 }
 

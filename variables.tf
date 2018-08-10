@@ -53,3 +53,8 @@ variable "node_asg_size_max" {
 variable "enable_bastion" {
   default = "0"
 }
+
+variable "node_additional_policies" {
+  type    = "string"
+  default = ""
+}
