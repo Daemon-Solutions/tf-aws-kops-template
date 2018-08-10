@@ -2,20 +2,20 @@ data "template_file" "cluster" {
   template = "${file("${path.module}/templates/cluster.tpl")}"
 
   vars {
-    cluster_name            = "${var.cluster_name}"
-    config_base             = "s3://${var.state_bucket}/${var.cluster_name}"
-    vpc_cidr                = "${var.vpc_cidr}"
-    vpc_id                  = "${var.vpc_id}"
-    etcd_members_snippet    = "${join("", data.template_file.etcd_members.*.rendered)}"
-    private_subnets_snippet = "${join("", data.template_file.private_subnets.*.rendered)}"
-    public_subnets_snippet  = "${join("", data.template_file.public_subnets.*.rendered)}"
-    master_ig_snippet       = "${join("", data.template_file.master_ig.*.rendered)}"
-    bastion_ig_snippet      = "${join("", data.template_file.bastion_ig.*.rendered)}"
-    private_subnets_list    = "${join("", formatlist("  - %s\n", var.azs))}"
-    node_instance_type      = "${var.node_instance_type}"
-    node_asg_size_min       = "${var.node_asg_size_min}"
-    node_asg_size_max       = "${var.node_asg_size_max}"
-    enable_bastion          = "${var.enable_bastion}"
+    cluster_name             = "${var.cluster_name}"
+    config_base              = "s3://${var.state_bucket}/${var.cluster_name}"
+    vpc_cidr                 = "${var.vpc_cidr}"
+    vpc_id                   = "${var.vpc_id}"
+    etcd_members_snippet     = "${join("", data.template_file.etcd_members.*.rendered)}"
+    private_subnets_snippet  = "${join("", data.template_file.private_subnets.*.rendered)}"
+    public_subnets_snippet   = "${join("", data.template_file.public_subnets.*.rendered)}"
+    master_ig_snippet        = "${join("", data.template_file.master_ig.*.rendered)}"
+    bastion_ig_snippet       = "${join("", data.template_file.bastion_ig.*.rendered)}"
+    private_subnets_list     = "${join("", formatlist("  - %s\n", var.azs))}"
+    node_instance_type       = "${var.node_instance_type}"
+    node_asg_size_min        = "${var.node_asg_size_min}"
+    node_asg_size_max        = "${var.node_asg_size_max}"
+    enable_bastion           = "${var.enable_bastion}"
     node_additional_policies = "${indent(6, var.node_additional_policies)}"
   }
 }
@@ -66,7 +66,7 @@ data "template_file" "bastion_ig" {
   count    = "${var.enable_bastion}"
 
   vars {
-    cluster_name            = "${var.cluster_name}"
-    private_subnets_list    = "${join("", formatlist("  - %s\n", var.azs))}"
+    cluster_name         = "${var.cluster_name}"
+    private_subnets_list = "${join("", formatlist("  - %s\n", var.azs))}"
   }
 }
