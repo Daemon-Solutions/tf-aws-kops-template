@@ -11,7 +11,7 @@ data "template_file" "cluster" {
     public_subnets_snippet   = "${join("", data.template_file.public_subnets.*.rendered)}"
     master_ig_snippet        = "${join("", data.template_file.master_ig.*.rendered)}"
     bastion_ig_snippet       = "${join("", data.template_file.bastion_ig.*.rendered)}"
-    private_subnets_list     = "${join("", formatlist("  - %s\n", var.azs))}"
+    private_subnets_list     = "${join("", formatlist("  - %s\n", slice(var.azs, 0, length(var.private_subnets))))}"
     node_instance_type       = "${var.node_instance_type}"
     node_asg_size_min        = "${var.node_asg_size_min}"
     node_asg_size_max        = "${var.node_asg_size_max}"
@@ -67,6 +67,6 @@ data "template_file" "bastion_ig" {
 
   vars {
     cluster_name         = "${var.cluster_name}"
-    private_subnets_list = "${join("", formatlist("  - %s\n", var.azs))}"
+    private_subnets_list = "${join("", formatlist("  - %s\n", slice(var.azs, 0, length(var.private_subnets))))}"
   }
 }
