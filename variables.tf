@@ -58,3 +58,8 @@ variable "node_additional_policies" {
   type    = "string"
   default = ""
 }
+
+variable "api_public" {
+  type    = "string"
+  default = "0"
+}

@@ -5,7 +5,7 @@ metadata:
 spec:
   api:
     loadBalancer:
-      type: Internal
+      type: ${lb_type}
   kubeAPIServer:
     authenticationTokenWebhookConfigFile: /srv/kubernetes/aws-iam-authenticator/kubeconfig.yaml
   hooks:
