@@ -26,8 +26,16 @@ variable "private_subnets" {
   type = "list"
 }
 
+variable "private_subnet_count" {
+  type = "string"
+}
+
 variable "public_subnets" {
   type = "list"
+}
+
+variable "public_subnet_count" {
+  type = "string"
 }
 
 variable "master_instance_type" {

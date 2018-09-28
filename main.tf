@@ -33,7 +33,7 @@ data "template_file" "etcd_members" {
 
 data "template_file" "private_subnets" {
   template = "${file("${path.module}/templates/private_subnets_snippet.tpl")}"
-  count    = "${length(var.private_subnets)}"
+  count    = "${var.private_subnet_count}"
 
   vars {
     subnet_id = "${element(var.private_subnets, count.index)}"
@@ -43,7 +43,7 @@ data "template_file" "private_subnets" {
 
 data "template_file" "public_subnets" {
   template = "${file("${path.module}/templates/public_subnets_snippet.tpl")}"
-  count    = "${length(var.public_subnets)}"
+  count    = "${var.public_subnet_count}"
 
   vars {
     subnet_id = "${element(var.public_subnets, count.index)}"
