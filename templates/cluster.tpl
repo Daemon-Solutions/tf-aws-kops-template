@@ -40,7 +40,7 @@ ${etcd_members_snippet}
     legacy: false
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.9.6
+  kubernetesVersion: ${kubernetes_version}
   masterPublicName: api.${cluster_name}
   networkCIDR: ${vpc_cidr}
   networkID: ${vpc_id}
