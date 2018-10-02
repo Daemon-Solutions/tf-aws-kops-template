@@ -67,6 +67,10 @@ variable "node_additional_policies" {
   default = ""
 }
 
+variable "kubernetes_version" {
+  type    = "string"
+}
+
 variable "api_public" {
   type    = "string"
   default = "0"
