@@ -62,6 +62,10 @@ variable "enable_bastion" {
   default = "0"
 }
 
+variable "registry_mirrors" {
+  default = []
+}
+
 variable "node_additional_policies" {
   type    = "string"
   default = ""

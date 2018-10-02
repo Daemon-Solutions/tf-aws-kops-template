@@ -28,6 +28,9 @@ spec:
   channel: stable
   cloudProvider: aws
   configBase: ${config_base}
+  docker:
+    registryMirrors:
+${registry_mirrors_list}
   etcdClusters:
   - etcdMembers:
 ${etcd_members_snippet}

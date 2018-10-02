@@ -16,6 +16,7 @@ data "template_file" "cluster" {
     node_asg_size_min        = "${var.node_asg_size_min}"
     node_asg_size_max        = "${var.node_asg_size_max}"
     enable_bastion           = "${var.enable_bastion}"
+    registry_mirrors_list    = "${join("", formatlist("  - %s\n", slice(var.registry_mirrors, 0, length(var.registry_mirrors))))}"
     kubernetes_version       = "${var.kubernetes_version}"
     node_additional_policies = "${indent(6, var.node_additional_policies)}"
     lb_type                  = "${var.api_public ? "Public" : "Internal" }"
