@@ -67,6 +67,16 @@ variable "node_additional_policies" {
   default = ""
 }
 
+variable "node_target_group_arns" {
+  type    = "list"
+  default = []
+}
+
+variable "node_target_group_arns_count" {
+  type    = "string"
+  default = "1"
+}
+
 variable "kubernetes_version" {
   type    = "string"
   default = "1.9.6"

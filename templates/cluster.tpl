@@ -81,5 +81,6 @@ spec:
   role: Node
   subnets:
 ${private_subnets_list}
+${external_lbs_snippet}
 
 ${bastion_ig_snippet}

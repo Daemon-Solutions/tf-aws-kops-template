@@ -15,6 +15,7 @@ data "template_file" "cluster" {
     node_instance_type       = "${var.node_instance_type}"
     node_asg_size_min        = "${var.node_asg_size_min}"
     node_asg_size_max        = "${var.node_asg_size_max}"
+    external_lbs_snippet     = "${join("", data.template_file.external_lbs.*.rendered)}"
     enable_bastion           = "${var.enable_bastion}"
     kubernetes_version       = "${var.kubernetes_version}"
     node_additional_policies = "${indent(6, var.node_additional_policies)}"
@@ -70,5 +71,14 @@ data "template_file" "bastion_ig" {
   vars {
     cluster_name         = "${var.cluster_name}"
     private_subnets_list = "${join("", formatlist("  - %s\n", slice(var.azs, 0, length(var.private_subnets))))}"
+  }
+}
+
+data "template_file" "external_lbs" {
+  template = "${file("${path.module}/templates/external_lbs_snippet.tpl")}"
+  count    = "${var.node_target_group_arns_count}"
+
+  vars {
+    target_group_arns_list = "${join("", formatlist("  - targetGroupARN: %s\n", slice(var.node_target_group_arns, 0, length(var.node_target_group_arns))))}"
   }
 }
