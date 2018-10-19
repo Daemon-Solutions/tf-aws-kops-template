@@ -82,5 +82,6 @@ spec:
   subnets:
 ${private_subnets_list}
 ${external_lbs_snippet}
+${node_additional_sgs_snippet}
 
 ${bastion_ig_snippet}

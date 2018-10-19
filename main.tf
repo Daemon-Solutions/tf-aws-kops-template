@@ -16,6 +16,7 @@ data "template_file" "cluster" {
     node_asg_size_min        = "${var.node_asg_size_min}"
     node_asg_size_max        = "${var.node_asg_size_max}"
     external_lbs_snippet     = "${join("", data.template_file.external_lbs.*.rendered)}"
+    node_additional_sgs_snippet = "${join("", data.template_file.node_additional_sgs.*.rendered)}"
     enable_bastion           = "${var.enable_bastion}"
     kubernetes_version       = "${var.kubernetes_version}"
     node_additional_policies = "${indent(6, var.node_additional_policies)}"
@@ -80,5 +81,14 @@ data "template_file" "external_lbs" {
 
   vars {
     target_group_arns_list = "${join("", formatlist("  - targetGroupARN: %s\n", slice(var.node_target_group_arns, 0, length(var.node_target_group_arns))))}"
+  }
+}
+
+data "template_file" "node_additional_sgs" {
+  template = "${file("${path.module}/templates/node_additional_sgs_snippet.tpl")}"
+  count    = "${var.node_additional_sgs_count}"
+
+  vars {
+    additional_sgs = "${join("", formatlist("  - %s\n", slice(var.node_additional_sgs, 0, length(var.node_additional_sgs))))}"
   }
 }

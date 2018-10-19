@@ -77,6 +77,16 @@ variable "node_target_group_arns_count" {
   default = "1"
 }
 
+variable "node_additional_sgs" {
+  type    = "list"
+  default = []
+}
+
+variable "node_additional_sgs_count" {
+  type    = "string"
+  default = "1"
+}
+
 variable "kubernetes_version" {
   type    = "string"
   default = "1.9.6"
