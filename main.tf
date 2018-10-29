@@ -21,6 +21,7 @@ data "template_file" "cluster" {
     enable_bastion           = "${var.enable_bastion}"
     kubernetes_version       = "${var.kubernetes_version}"
     node_additional_policies = "${indent(6, var.node_additional_policies)}"
+    master_additional_policies = "${indent(6, var.master_additional_policies)}"
     lb_type                  = "${var.api_public ? "Public" : "Internal" }"
   }
 }

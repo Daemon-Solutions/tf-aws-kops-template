@@ -48,6 +48,11 @@ variable "master_ami" {
   default = "kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-08-17"
 }
 
+variable "master_additional_policies" {
+  type    = "string"
+  default = ""
+}
+
 variable "node_ami" {
   type    = "string"
   default = "kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-08-17"

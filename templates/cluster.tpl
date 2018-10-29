@@ -23,6 +23,8 @@ spec:
   additionalPolicies:
     node: |
       ${node_additional_policies}
+    master: |
+      ${master_additional_policies}
   authorization:
     rbac: {}
   channel: stable
