@@ -15,6 +15,7 @@ data "template_file" "cluster" {
     node_instance_type       = "${var.node_instance_type}"
     node_asg_size_min        = "${var.node_asg_size_min}"
     node_asg_size_max        = "${var.node_asg_size_max}"
+    image                    = "${var.node_ami}"
     external_lbs_snippet     = "${join("", data.template_file.external_lbs.*.rendered)}"
     node_additional_sgs_snippet = "${join("", data.template_file.node_additional_sgs.*.rendered)}"
     enable_bastion           = "${var.enable_bastion}"
@@ -62,6 +63,7 @@ data "template_file" "master_ig" {
     cluster_name         = "${var.cluster_name}"
     az                   = "${element(var.azs, count.index)}"
     master_instance_type = "${var.master_instance_type}"
+    image                = "${var.master_ami}"
   }
 }
 

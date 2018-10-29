@@ -43,6 +43,16 @@ variable "master_instance_type" {
   default = "c4.large"
 }
 
+variable "master_ami" {
+  type    = "string"
+  default = "kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-08-17"
+}
+
+variable "node_ami" {
+  type    = "string"
+  default = "kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-08-17"
+}
+
 variable "node_instance_type" {
   type    = "string"
   default = "t2.medium"

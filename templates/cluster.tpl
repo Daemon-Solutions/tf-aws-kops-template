@@ -72,7 +72,7 @@ metadata:
   name: nodes
 spec:
   associatePublicIp: false
-  image: kope.io/k8s-1.9-debian-jessie-amd64-hvm-ebs-2018-03-11
+  image: ${image}
   machineType: ${node_instance_type}
   maxSize: ${node_asg_size_max}
   minSize: ${node_asg_size_min}

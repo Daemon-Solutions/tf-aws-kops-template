@@ -6,7 +6,7 @@ metadata:
   name: master-${az}
 spec:
   associatePublicIp: false
-  image: kope.io/k8s-1.9-debian-jessie-amd64-hvm-ebs-2018-03-11
+  image: ${image}
   machineType: ${master_instance_type}
   maxSize: 1
   minSize: 1
