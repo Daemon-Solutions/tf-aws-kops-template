@@ -9,7 +9,7 @@ spec:
   image: ${image}
   machineType: ${master_instance_type}
   maxSize: 1
-  minSize: 1
+  minSize: ${master_asg_size_min}
   nodeLabels:
     kops.k8s.io/instancegroup: master-${az}
   role: Master

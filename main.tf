@@ -65,6 +65,7 @@ data "template_file" "master_ig" {
     az                   = "${element(var.azs, count.index)}"
     master_instance_type = "${var.master_instance_type}"
     image                = "${var.master_ami}"
+    master_asg_size_min  = "${var.master_asg_size_min}"
   }
 }
 

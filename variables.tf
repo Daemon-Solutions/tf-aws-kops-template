@@ -73,6 +73,11 @@ variable "node_asg_size_max" {
   default = "2"
 }
 
+variable "master_asg_size_min" {
+  type    = "string"
+  default = "1"
+}
+
 variable "enable_bastion" {
   default = "0"
 }
