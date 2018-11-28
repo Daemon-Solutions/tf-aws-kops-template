@@ -58,7 +58,7 @@ ${public_subnets_snippet}
     bastion:
       bastionPublicName: bastion.${cluster_name}
     dns:
-      type: Private
+      type: ${dns_topology}
     masters: private
     nodes: private
 
