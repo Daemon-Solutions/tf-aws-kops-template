@@ -118,6 +118,6 @@ variable "api_public" {
 }
 
 variable "dns_topology" {
-  type = "string"
-  default = "private"
+  type    = "string"
+  default = "Private"
 }
