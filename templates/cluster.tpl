@@ -19,7 +19,7 @@ spec:
       [Service]
       Type=oneshot
       ExecStart=/bin/mkdir -p /srv/kubernetes/aws-iam-authenticator
-      ExecStart=/usr/local/bin/aws s3 cp --recursive ${config_base}/addons/authenticator /srv/kubernetes/aws-iam-authenticator/
+      ExecStart=/bin/bash -c 'PATH=/bin:/usr/local/bin aws s3 cp --recursive ${config_base}/addons/authenticator /srv/kubernetes/aws-iam-authenticator/'
   additionalPolicies:
     node: |
       ${node_additional_policies}
