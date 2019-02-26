@@ -7,7 +7,7 @@ metadata:
     kops.k8s.io/cluster: ${cluster_name}
   name: bastions
 spec:
-  image: kope.io/k8s-1.9-debian-jessie-amd64-hvm-ebs-2018-03-11
+  image: ${image}
   machineType: t2.micro
   maxSize: 1
   minSize: 1
