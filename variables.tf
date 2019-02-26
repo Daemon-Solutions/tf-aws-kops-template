@@ -125,3 +125,7 @@ variable "dns_topology" {
 variable "enable_aws_iam_authenticator" {
   default = "true"
 }
+
+variable "cloud_labels" {
+  default = {}
+}

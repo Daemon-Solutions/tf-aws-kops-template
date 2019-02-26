@@ -12,6 +12,8 @@ spec:
   minSize: ${master_asg_size_min}
   nodeLabels:
     kops.k8s.io/instancegroup: master-${az}
+  cloudLabels:
+${cloud_labels_snippet}
   role: Master
   subnets:
   - ${az}

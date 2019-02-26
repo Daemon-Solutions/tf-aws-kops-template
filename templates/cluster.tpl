@@ -67,6 +67,8 @@ spec:
   minSize: ${node_asg_size_min}
   nodeLabels:
     kops.k8s.io/instancegroup: nodes
+  cloudLabels:
+${cloud_labels_snippet}
   role: Node
   subnets:
 ${private_subnets_list}

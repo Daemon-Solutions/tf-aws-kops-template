@@ -25,6 +25,7 @@ data "template_file" "cluster" {
     master_additional_policies    = "${indent(6, var.master_additional_policies)}"
     lb_type                       = "${var.api_public ? "Public" : "Internal" }"
     dns_topology                  = "${var.dns_topology}"
+    cloud_labels_snippet          = "${join("", formatlist("   %s: %s\n", keys(var.cloud_labels), values(var.cloud_labels)))}"
   }
 }
 
@@ -68,6 +69,7 @@ data "template_file" "master_ig" {
     master_instance_type = "${var.master_instance_type}"
     image                = "${var.master_ami}"
     master_asg_size_min  = "${var.master_asg_size_min}"
+    cloud_labels_snippet = "${join("", formatlist("   %s: %s\n", keys(var.cloud_labels), values(var.cloud_labels)))}"
   }
 }
 
@@ -78,6 +80,7 @@ data "template_file" "bastion_ig" {
   vars {
     cluster_name         = "${var.cluster_name}"
     private_subnets_list = "${join("", formatlist("  - %s\n", slice(var.azs, 0, length(var.private_subnets))))}"
+    cloud_labels_snippet = "${join("", formatlist("   %s: %s\n", keys(var.cloud_labels), values(var.cloud_labels)))}"
   }
 }
 
