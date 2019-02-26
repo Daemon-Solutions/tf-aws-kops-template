@@ -121,3 +121,7 @@ variable "dns_topology" {
   type    = "string"
   default = "Private"
 }
+
+variable "enable_aws_iam_authenticator" {
+  default = "true"
+}

@@ -11,6 +11,7 @@ data "template_file" "cluster" {
     public_subnets_snippet   = "${join("", data.template_file.public_subnets.*.rendered)}"
     master_ig_snippet        = "${join("", data.template_file.master_ig.*.rendered)}"
     bastion_ig_snippet       = "${join("", data.template_file.bastion_ig.*.rendered)}"
+    aws_iam_authenticator_snippet = "${join("", data.template_file.aws_iam_authenticator.*.rendered)}"
     private_subnets_list     = "${join("", formatlist("  - %s\n", slice(var.azs, 0, length(var.private_subnets))))}"
     node_instance_type       = "${var.node_instance_type}"
     node_asg_size_min        = "${var.node_asg_size_min}"
@@ -95,5 +96,14 @@ data "template_file" "node_additional_sgs" {
 
   vars {
     additional_sgs = "${join("", formatlist("  - %s\n", slice(var.node_additional_sgs, 0, length(var.node_additional_sgs))))}"
+  }
+}
+
+data "template_file" "aws_iam_authenticator" {
+  template = "${file("${path.module}/templates/aws_iam_authenticator_snippet.tpl")}"
+  count    = "${var.enable_aws_iam_authenticator ? 1 : 0}"
+
+  vars {
+    config_base = "s3://${var.state_bucket}/${var.cluster_name}"
   }
 }
