@@ -10,8 +10,13 @@ ${aws_iam_authenticator_snippet}
   additionalPolicies:
     node: |
       ${node_additional_policies}
+
     master: |
       ${master_additional_policies}
+
+    bastion: |
+      ${bastion_additional_policies}
+
   authorization:
     rbac: {}
   channel: stable

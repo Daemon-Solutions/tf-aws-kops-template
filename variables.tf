@@ -87,6 +87,11 @@ variable "bastion_ami" {
   default = "kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-03-11"
 }
 
+variable "bastion_additional_policies" {
+  type    = "string"
+  default = ""
+}
+
 variable "node_additional_policies" {
   type    = "string"
   default = ""

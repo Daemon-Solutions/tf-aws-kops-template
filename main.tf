@@ -23,6 +23,7 @@ data "template_file" "cluster" {
     kubernetes_version            = "${var.kubernetes_version}"
     node_additional_policies      = "${indent(6, var.node_additional_policies)}"
     master_additional_policies    = "${indent(6, var.master_additional_policies)}"
+    bastion_additional_policies   = "${indent(6, var.bastion_additional_policies)}"
     lb_type                       = "${var.api_public ? "Public" : "Internal" }"
     dns_topology                  = "${var.dns_topology}"
     cloud_labels_snippet          = "${join("", formatlist("   %s: %s\n", keys(var.cloud_labels), values(var.cloud_labels)))}"
