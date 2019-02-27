@@ -92,6 +92,10 @@ variable "bastion_additional_policies" {
   default = ""
 }
 
+variable "bastion_public" {
+  default = "false"
+}
+
 variable "node_additional_policies" {
   type    = "string"
   default = ""

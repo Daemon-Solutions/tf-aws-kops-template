@@ -80,7 +80,7 @@ data "template_file" "bastion_ig" {
 
   vars {
     cluster_name         = "${var.cluster_name}"
-    private_subnets_list = "${join("", formatlist("  - %s\n", slice(var.azs, 0, length(var.private_subnets))))}"
+    subnets_list         = "${join("", formatlist("  - %s%s\n", var.bastion_public ? "utility-" : "", slice(var.azs, 0, length(var.private_subnets))))}"
     cloud_labels_snippet = "${join("", formatlist("   %s: %s\n", keys(var.cloud_labels), values(var.cloud_labels)))}"
     image                = "${var.bastion_ami}"
   }

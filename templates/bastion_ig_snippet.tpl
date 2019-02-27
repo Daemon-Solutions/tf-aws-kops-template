@@ -17,4 +17,4 @@ spec:
 ${cloud_labels_snippet}
   role: Bastion
   subnets:
-${private_subnets_list}
+${subnets_list}
