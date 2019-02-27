@@ -83,6 +83,7 @@ data "template_file" "bastion_ig" {
     subnets_list         = "${join("", formatlist("  - %s%s\n", var.bastion_public ? "utility-" : "", slice(var.azs, 0, length(var.private_subnets))))}"
     cloud_labels_snippet = "${join("", formatlist("   %s: %s\n", keys(var.cloud_labels), values(var.cloud_labels)))}"
     image                = "${var.bastion_ami}"
+    additional_sgs_snippet = "  additionalSecurityGroups:\n${join("", formatlist("  - %s\n", var.bastion_additional_sgs))}"
   }
 }
 

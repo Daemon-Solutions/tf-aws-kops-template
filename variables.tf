@@ -96,6 +96,11 @@ variable "bastion_public" {
   default = "false"
 }
 
+variable "bastion_additional_sgs" {
+  type    = "list"
+  default = []
+}
+
 variable "node_additional_policies" {
   type    = "string"
   default = ""

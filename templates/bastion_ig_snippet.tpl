@@ -18,3 +18,4 @@ ${cloud_labels_snippet}
   role: Bastion
   subnets:
 ${subnets_list}
+${additional_sgs_snippet}
