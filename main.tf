@@ -89,7 +89,7 @@ data "template_file" "external_lbs" {
   count    = "${var.node_target_group_arns_count}"
 
   vars {
-    target_group_arns_list = "${join("", formatlist("  - targetGroupARN: %s\n", slice(var.node_target_group_arns, 0, length(var.node_target_group_arns))))}"
+    target_group_arns_list = "${join("", formatlist("  - targetGroupArn: %s\n", slice(var.node_target_group_arns, 0, length(var.node_target_group_arns))))}"
   }
 }
 
