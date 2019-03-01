@@ -27,6 +27,8 @@ ${etcd_members_snippet}
   iam:
     allowContainerRegistry: true
     legacy: false
+  kubelet:
+    anonymousAuth: false
   kubernetesApiAccess:
   - 0.0.0.0/0
   kubernetesVersion: ${kubernetes_version}
